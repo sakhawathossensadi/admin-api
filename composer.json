@@ -1,0 +1,19 @@
+{
+    "name": "analyzen/admin",
+    "description": "This is an admin package",
+    "type": "laravel-package",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Analyzen\\Admin\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "sakhawathossensadi",
+            "email": "newtonss919@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
