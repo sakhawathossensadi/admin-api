@@ -3,6 +3,25 @@
     "description": "This is an admin package",
     "type": "laravel-package",
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+              "name": "analyzen/candiadte",
+              "version": "dev-master",
+              "type": "package",
+              "source": {
+                "url": "https://github.com/sakhawathossensadi/candidate-api.git",
+                "type": "git",
+                "reference": "master"
+              }
+            }
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/sakhawathossensadi/auth-api.git"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Analyzen\\Admin\\": "src/"
@@ -27,5 +46,8 @@
     },
     "minimum-stability": "dev",
     "require": {
-    }
+        "analyzen/candiadte": "dev-master",
+        "analyzen/auth": "dev-master"
+    },
+    "prefer-stable": true
 }
