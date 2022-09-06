@@ -10,5 +10,6 @@ Route::group(
     ],
     static function (): void {
         Route::get('candidates', [AdminController::class, 'index'])->name('candidate.index');
+        Route::post('candidates/{candidateId}/status', [AdminController::class, 'updateStatus'])->name('candidate.status.update');
     }
 );
