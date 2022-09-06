@@ -9,5 +9,7 @@ class AdminApiTest extends TestCase
     public function tests_get_candidates()
     {
         $this->withoutExceptionHandling();
+
+        $this->assertTrue(true);
     }
 }

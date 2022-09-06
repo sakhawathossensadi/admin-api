@@ -2,13 +2,14 @@
 
 namespace Analyzen\Admin\Tests;
 
-use Analyzen\Admin\Http\Models\Candidate;
-use Analyzen\Admin\Http\Models\User;
+use Analyzen\Admin\Models\User;
 use Analyzen\Admin\Models\Admin;
+use Analyzen\Admin\Models\Candidate;
 use Illuminate\Foundation\Testing\WithFaker;
 use Orchestra\Testbench\TestCase as OrchestraTestCase;
 use Laravel\Passport\PassportServiceProvider;
 use Analyzen\Admin\ServiceProvider;
+use Analyzen\Candidate\ServiceProvider as CandidateServiceProvider;
 
 class TestCase extends OrchestraTestCase
 {
@@ -23,9 +24,8 @@ class TestCase extends OrchestraTestCase
         $this->loadLaravelMigrations();
         $this->artisan('migrate')->run();
 
-        $candidate = User::factory()->create();
-        dd($candidate);
-        $this->candidate = $candidate;
+        $user = User::factory()->create();
+        $this->user = $user;
     }
 
     /**
@@ -56,11 +56,12 @@ class TestCase extends OrchestraTestCase
     protected function getPackageProviders($app)
     {
         return [
+            // 'Analyzen\\Candidate\\ServiceProvider',
             'Analyzen\\Auth\\ServiceProvider',
             'Analyzen\\Auth\\AuthServiceProvider',
-            'Analyzen\\Candidate\\ServiceProvider',
             PassportServiceProvider::class,
             ServiceProvider::class,
+            // CandidateServiceProvider::class,
         ];
     }
 }
