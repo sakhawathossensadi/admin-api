@@ -24,7 +24,9 @@
     ],
     "autoload": {
         "psr-4": {
-            "Analyzen\\Admin\\": "src/"
+            "Analyzen\\Admin\\": "src/",
+            "Analyzen\\Admin\\Database\\Factories\\": "database/factories/",
+            "Analyzen\\Admin\\Database\\Seeders\\": "database/seeders/"
         }
     },
     "authors": [
@@ -48,6 +50,11 @@
     "require": {
         "analyzen/candiadte": "dev-master",
         "analyzen/auth": "dev-master"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Analyzen\\Admin\\Tests\\": "tests/"
+        }
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
