@@ -49,5 +49,11 @@
         "analyzen/candiadte": "dev-master",
         "analyzen/auth": "dev-master"
     },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-f": "vendor/bin/phpunit --filter",
+        "test-w": "vendor\\bin\\phpunit",
+        "test-wf": "vendor\\bin\\phpunit --filter"
+    },
     "prefer-stable": true
 }
