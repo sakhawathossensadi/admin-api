@@ -2,9 +2,9 @@
 
 namespace Analyzen\Admin\Http\Models;
 
-use Analyzen\Auth\Models\User;
+use Analyzen\Auth\Models\User as AuthUser;
 
-class Candidate extends User
+class User extends AuthUser
 {
     protected static function newFactory()
     {
