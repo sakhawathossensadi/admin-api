@@ -24,4 +24,29 @@ class AdminApiTest extends TestCase
 
         $response->assertJsonCount(4, 'data');
     }
+
+    public function tests_candidate_status_update()
+    {
+        $this->withoutExceptionHandling();
+
+        $candidate = User::factory()
+            ->state([
+                'role' => 'candidate',
+                'status' => 0,
+            ])
+            ->create();
+
+        $this->assertDatabaseHas((new User())->getTable(), [
+            'status' => 0
+        ]);
+
+        $response = $this->actingAs($this->user, 'api')
+            ->postJson(route('candidate.status.update', ['candidateId' => $candidate->id]), [
+                'status' => 1
+            ]);
+
+        $response->assertJsonFragment([
+            'is_active' => true,
+        ]);
+    }
 }
