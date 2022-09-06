@@ -16,4 +16,17 @@ class AdminController extends BaseController
 
         return CandidateResource::collection($candidates);
     }
+
+    public function updateStatus($candidateId, Request $request)
+    {
+        $candidate = User::findByUserId($candidateId);
+
+        $status = $request->status;
+
+        $data = $request->except(['_token', '_method']);
+
+        $candidate->update($data);
+
+        return new CandidateResource($candidate);
+    }
 }
