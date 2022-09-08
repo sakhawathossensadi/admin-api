@@ -49,4 +49,25 @@ class AdminApiTest extends TestCase
             'is_active' => true,
         ]);
     }
+
+    public function tests_candidate_details()
+    {
+        $this->withoutExceptionHandling();
+
+        $candidates = User::factory()
+            ->state([
+                'role' => "candidate"
+            ])
+            ->count(3)->create();
+
+        $candidate = User::all();
+        $candidate = $candidates->last();
+
+        $response = $this->actingAs($this->user, 'api')
+            ->getJson(route('candidate.details', ['candidateId' => $candidate->id]));
+
+        $response->assertJsonFragment([
+            'name' => $candidate->name,
+        ]);
+    }
 }
