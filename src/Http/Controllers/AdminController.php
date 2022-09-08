@@ -29,4 +29,11 @@ class AdminController extends BaseController
 
         return new CandidateResource($candidate);
     }
+
+    public function show($candidateId, Request $request)
+    {
+        $candidate = User::findByUserId($candidateId);
+
+        return new CandidateResource($candidate);
+    }
 }
