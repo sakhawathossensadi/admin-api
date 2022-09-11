@@ -70,4 +70,18 @@ class AdminApiTest extends TestCase
             'name' => $candidate->name,
         ]);
     }
+
+    public function tests_admin_details()
+    {
+        $this->withExceptionHandling();
+
+        $user = $this->user;
+
+        $response = $this->actingAs($this->user, 'api')
+            ->getJson(route('admin.profile'));
+
+        $response->assertJsonFragment([
+            'name' => $user->name,
+        ]);
+    }
 }
