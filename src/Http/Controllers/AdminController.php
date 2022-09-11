@@ -2,6 +2,7 @@
 
 namespace Analyzen\Admin\Http\Controllers;
 
+use Analyzen\Admin\Http\Resources\AdminResource;
 use Analyzen\Admin\Http\Resources\CandidateResource;
 use Analyzen\Admin\Models\User;
 use Illuminate\Http\Request;
@@ -35,5 +36,12 @@ class AdminController extends BaseController
         $candidate = User::findByUserId($candidateId);
 
         return new CandidateResource($candidate);
+    }
+
+    public function profile(Request $request)
+    {
+        $admin = $request->user();
+
+        return new AdminResource($admin);
     }
 }
